@@ -185,7 +185,7 @@ export function Contact() {
                   <span className="text-green-400">Available for work</span>
                 </div>
                 <Button
-                  onClick={() => window.open("#", "_blank")}
+                  onClick={() => window.open("https://drive.google.com/file/d/1kkRXo_uQL6WwQ1gWp6iT4BOZp-jVGGIY/view?usp=sharing", "_blank")}
                   className="w-full bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-400 hover:to-cyan-500 text-white rounded-lg shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all"
                 >
                   <FileText size={18} className="mr-2" />

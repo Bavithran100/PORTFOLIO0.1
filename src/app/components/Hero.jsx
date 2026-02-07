@@ -55,7 +55,7 @@ and networking for production-ready applications.
             </Button>
             <Button
               size="lg"
-              onClick={() => window.open("#", "_blank")}
+              onClick={() => window.open("https://drive.google.com/file/d/1kkRXo_uQL6WwQ1gWp6iT4BOZp-jVGGIY/view?usp=sharing", "_blank")}
               className="bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-400 hover:to-cyan-500 text-white px-8 py-6 text-lg rounded-xl shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-[0_0_40px_rgba(16,185,129,0.5)] transition-all"
             >
               <FileText size={20} className="mr-2" />
@@ -90,7 +90,7 @@ and networking for production-ready applications.
               <Mail size={20} />
             </a>
             <a
-              href="https://drive.google.com/file/d/1bC--zd2AR7yV-f-2TY5Vi2eyn4TVswYZ/view"
+              href="https://drive.google.com/file/d/1kkRXo_uQL6WwQ1gWp6iT4BOZp-jVGGIY/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(0,212,255,0.3)] transition-all"
