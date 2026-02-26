@@ -197,7 +197,7 @@ export function Contact() {
 
           <div className="mt-20 pt-10 border-t border-white/10 text-center">
             <p className="text-gray-400">
-              (c) 2026 Alex Rivera. Crafted with passion and cutting-edge tech.
+              (c) 2026 Bavithran . Crafted with passion and cutting-edge tech.
             </p>
           </div>
         </div>

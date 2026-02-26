@@ -16,7 +16,7 @@ export function Skills() {
     "SpringBoot",
     "MySQL",
     
-    "PostgreSQL",
+    // "PostgreSQL",
     "MongoDB",
     "Redis",
     "GraphQL",
@@ -27,8 +27,10 @@ export function Skills() {
     "Git",
     "CI/CD",
     "Tailwind",
-    "Prisma",
-    "Jest",
+    "Render",
+    "OAuth2",
+    // "Prisma",
+    // "Jest",
     "WebSocket",
     "Microservices",
   ];
@@ -87,17 +89,17 @@ export function Skills() {
 
               <div className="mt-10 pt-8 border-t border-white/10">
                 <div className="grid grid-cols-3 gap-4 text-center">
+                  {/* <div>
+                    <div className="text-3xl text-cyan-400 mb-2">Fresher</div>
+                    <div className="text-sm text-gray-400">Years Experience </div>
+                  </div> */}
                   <div>
-                    <div className="text-3xl text-cyan-400 mb-2">5+</div>
-                    <div className="text-sm text-gray-400">Years Experience</div>
-                  </div>
-                  <div>
-                    <div className="text-3xl text-violet-400 mb-2">50+</div>
+                    <div className="text-3xl text-violet-400 mb-2">5+</div>
                     <div className="text-sm text-gray-400">Projects Done</div>
                   </div>
                   <div>
-                    <div className="text-3xl text-cyan-400 mb-2">30+</div>
-                    <div className="text-sm text-gray-400">Happy Clients</div>
+                    <div className="text-3xl text-cyan-400 mb-2">3+</div>
+                    <div className="text-sm text-gray-400">Hackathons</div>
                   </div>
                 </div>
               </div>
