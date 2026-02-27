@@ -1,3 +1,5 @@
+import { AnimatedBackground } from "./AnimatedBackground";
+
 export function Skills() {
   const skills = [
     { name: "React / Nodejs", level: 95, category: "frontend" },
@@ -37,6 +39,7 @@ export function Skills() {
 
   return (
     <section id="skills" className="py-32 bg-[#0a0a0f] relative">
+      {/* <AnimatedBackground/> */}
       <div className="absolute inset-0 bg-gradient-to-b from-violet-900/5 via-transparent to-cyan-900/5"></div>
 
       <div className="container mx-auto px-6 relative z-10">

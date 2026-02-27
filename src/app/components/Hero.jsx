@@ -1,5 +1,6 @@
 import { ArrowDown, Github, Linkedin, Mail, FileText } from "lucide-react";
 import { Button } from "./ui/button";
+import { AnimatedBackground } from "./AnimatedBackground";
 
 export function Hero() {
   const scrollToSection = (id) => {
@@ -11,6 +12,7 @@ export function Hero() {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative bg-[#0a0a0f] overflow-hidden">
+      <AnimatedBackground/>
       <div className="absolute inset-0 bg-gradient-to-br from-violet-900/20 via-transparent to-cyan-900/20"></div>
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/30 rounded-full blur-[120px] animate-pulse"></div>

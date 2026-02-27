@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
 import { Button } from "./ui/button";
 import { useRef } from "react";
+import { AnimatedBackground } from "./AnimatedBackground";
 
 export function Projects() {
   const scrollContainerRef = useRef(null);
@@ -81,6 +82,7 @@ export function Projects() {
 
   return (
     <section id="projects" className="py-32 bg-[#0a0a0f] relative">
+      {/* <AnimatedBackground/> */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-600/10 rounded-full blur-[150px]"></div>
 
       <div className="container mx-auto px-6 relative z-10">

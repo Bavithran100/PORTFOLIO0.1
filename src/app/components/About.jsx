@@ -13,7 +13,7 @@ export function About() {
 
   return (
     <section id="about" className="py-32 bg-[#0a0a0f] relative">
-      <AnimatedBackground/>
+      {/* <AnimatedBackground/> */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-violet-900/5 to-transparent"></div>
 
       <div className="container mx-auto px-6 relative z-10">
