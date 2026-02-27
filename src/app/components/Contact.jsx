@@ -5,6 +5,7 @@ import emailjs from "@emailjs/browser";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+import { AnimatedBackground } from "./AnimatedBackground";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -65,6 +66,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-32 bg-[#0a0a0f] relative">
+      <AnimatedBackground/>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-violet-600/10 rounded-full blur-[150px]"></div>
 
       <div className="container mx-auto px-6 relative z-10">
