@@ -1,6 +1,7 @@
 import { ArrowDown, Github, Linkedin, Mail, FileText } from "lucide-react";
 import { Button } from "./ui/button";
 import { AnimatedBackground } from "./AnimatedBackground";
+import { TypingRotatingText } from "./TypingRotatingText";
 
 export function Hero() {
   const scrollToSection = (id) => {
@@ -9,6 +10,14 @@ export function Hero() {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const rotatingWords = [
+    "Backend Developer (Spring Boot)",
+    "System Design Learner",
+    "Problem Solver",
+    "Tech Enthusiast",
+    "API Builder",
+  ];
 
   return (
     <section className="min-h-screen flex items-center justify-center relative bg-[#0a0a0f] overflow-hidden">
@@ -21,8 +30,8 @@ export function Hero() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
           <div className="mb-6">
-            <p className="text-cyan-400 text-lg mb-4 tracking-widest uppercase">
-              Welcome to my portfolio
+            <p className="text-gray-400 text-2xl md:text-3xl mb-4">
+              Hi, I am
             </p>
             <h1 className="text-6xl md:text-8xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-200 to-violet-400 animate-fade-in">
               Bavithran Natarajan
@@ -30,8 +39,8 @@ export function Hero() {
             <div className="h-1 w-32 mx-auto bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full mb-8"></div>
           </div>
 
-          <h2 className="text-3xl md:text-4xl text-white/90 mb-6">
-              Backend Developer (Spring Boot) : System Design Learner
+          <h2 className="text-3xl md:text-4xl text-white/90 mb-6 min-h-[48px] md:min-h-[56px] flex items-center justify-center">
+            <TypingRotatingText words={rotatingWords} className="text-cyan-400" />
           </h2>
 
           <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
