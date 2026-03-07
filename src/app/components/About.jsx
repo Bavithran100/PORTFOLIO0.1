@@ -9,16 +9,16 @@ export function About() {
     { id: "skills", label: "Skills", icon: Code2 },
     { id: "education", label: "Education", icon: GraduationCap },
     { id: "experience", label: "Experience", icon: Briefcase },
-    { id: "coding", label: "Coding Profiles", icon: Code2 },
+    { id: "coding", label: "Platforms Profiles", icon: Code2 },
     { id: "certifications", label: "Certifications", icon: Award },
   ];
 
   const programmingSkills = [
     { name: "Java" },
     { name: "JavaScript" },
-    { name: "TypeScript" },
-    { name: "Python" },
-    { name: "C++" },
+    
+    
+    
     { name: "HTML/CSS" },
   ];
 
@@ -30,14 +30,23 @@ export function About() {
     { name: "Thymeleaf" },
   ];
 
-  const backendDB = [
-    { name: "MySQL" },
-    { name: "MongoDB" },
-    { name: "REST APIs" },
-    { name: "OAuth2" },
-    { name: "Microservices" },
-    { name: "AWS" },
-  ];
+const backendDB = [
+  { name: "MySQL" },
+  { name: "MongoDB" },
+  { name: "Redis" },
+  { name: "REST APIs" },
+  { name: "OAuth2 / JWT" },
+  { name: "Microservices" }
+];
+const devOpsTools = [
+  { name: "Docker & Docker Hub" },
+  { name: "Nginx" },
+  { name: "AWS" },
+  { name: "CI/CD" },
+  {name:"VS Code"},
+  {name:"Git & GitHub"}
+ 
+];
 
   const experiences = [
     {
@@ -56,47 +65,91 @@ export function About() {
     },
   ];
 
-  const education = [
-    {
-      degree: "B.E. in Electronics and Communication Engineering",
-      institution: "Sri Eshwar College of Engineering",
-      period: "2022 - 2026",
-      description:
-        "Focused on software development, backend engineering, and problem-solving through projects, hackathons, and continuous learning.",
-    },
-  ];
+const education = [
+  {
+    degree: "B.E. Electronics and Communication Engineering",
+    institution: "Sri Eshwar College of Engineering",
+    period: "2024 - 2028",
+    description:
+      "Currently pursuing my undergraduate degree with a CGPA of 8.10. Actively focusing on backend development using Spring Boot, system design concepts, and building scalable full-stack applications through projects and hackathons.",
+  },
+  {
+    degree: "Higher Secondary Certificate (HSC)",
+    institution: "Swamy Vivekananda Matric Hr. Sec School",
+    period: "2023 - 2024",
+    description:
+      "Completed higher secondary education with 90.5%, building strong fundamentals in mathematics, logical reasoning, and analytical thinking.",
+  },
+  {
+    degree: "Secondary School Leaving Certificate (SSLC)",
+    institution: "Swamy Vivekananda Matric Hr. Sec School",
+    period: "2021 - 2022",
+    description:
+      "Completed secondary education with 92%, developing foundational problem-solving and academic discipline.",
+  },
+];
 
   const codingProfiles = [
-    {
-      platform: "GitHub",
-      username: "@Bavithran100",
-      primaryMetricLabel: "Projects",
-      primaryMetric: "5+",
-      secondaryMetricLabel: "Public Repos",
-      secondaryMetric: "Growing",
-    },
-    {
-      platform: "Hackathons",
-      username: "3+ Participations",
-      primaryMetricLabel: "Events",
-      primaryMetric: "3+",
-      secondaryMetricLabel: "Focus",
-      secondaryMetric: "Product + Backend",
-    },
+ {
+    platform: "GitHub",
+    username: "@Bavithran100",
+    url: "https://github.com/Bavithran100",
+    primaryMetricLabel: "Projects",
+    primaryMetric: "5+",
+    secondaryMetricLabel: "Public Repos",
+    secondaryMetric: "Growing",
+  },
+  {
+    platform: "LeetCode",
+    username: "Bavithran",
+    url: "https://leetcode.com/u/Bavithran777/",
+    primaryMetricLabel: "Problems Solved",
+    primaryMetric: "350+",
+    secondaryMetricLabel: "Focus",
+    secondaryMetric: "DSA Practice",
+  },
+  {
+    platform: "GeeksforGeeks",
+    username: "Bavithran",
+    url: "https://www.geeksforgeeks.org/profile/bavithrann77gf",
+    primaryMetricLabel: "Practice",
+    primaryMetric: "DSA + CS",
+    secondaryMetricLabel: "Topics",
+    secondaryMetric: "Algorithms",
+  },
+  {
+    platform: "SkillRack",
+    username: "Bavithran",
+    url: "https://www.skillrack.com/faces/resume.xhtml?id=515212&key=4dc142e2f19dfe3c9faa7325a937c728c3caa2a8",
+    primaryMetricLabel: "Problems Solved",
+    primaryMetric: "1000+",
+    secondaryMetricLabel: "Achievements",
+    secondaryMetric: "351 Bronzes",
+  }
   ];
 
-  const certifications = [
-    {
-      name: "Backend / Java-Spring Learning Certifications",
-      issuer: "Online Learning Platforms",
-      date: "2024 - 2026",
-    },
-    {
-      name: "Cloud and Deployment Fundamentals",
-      issuer: "Hands-on Project Practice",
-      date: "2024 - 2026",
-    },
-  ];
+const certifications = [
+  {
+    name: "Honors Diploma in Computer Application (HDCA)",
+    issuer: "SkillIndia",
+    date: "Completed",
+  },
+  {
+    name: "The Complete Java Programmer: From Scratch to Advanced",
+    issuer: "Udemy",
+    date: "2024",
+  },
+  {
+    name: "Mastering Data Structures & Algorithms using Java",
+    issuer: "Udemy",
+    date: "2024",
+  },
+  {
+    name: "Ethics in Generative AI",
+    issuer: "Udemy",
+    date: "2024",
+  },
+];
 
   return (
     <section
@@ -201,6 +254,19 @@ export function About() {
                         ))}
                       </div>
                     </div>
+                    <div>
+                      <h4 className="text-xl text-white mb-4">DevOps & Tools</h4>
+                      <div className="flex flex-wrap gap-3">
+                        {devOpsTools.map((skill, index) => (
+                          <div
+                            key={index}
+                            className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-cyan-500/30 transition-all"
+                          >
+                            <span className="text-gray-300">{skill.name}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 )}
 
@@ -250,7 +316,7 @@ export function About() {
                         <div className="flex justify-between items-start mb-3">
                           <div>
                             <h4 className="text-xl text-white mb-1">{profile.platform}</h4>
-                            <p className="text-cyan-400">{profile.username}</p>
+                            <a href={profile.url} target="_blank" className="text-cyan-400">{profile.username}</a>
                           </div>
                           <Code2 className="text-violet-400" size={24} />
                         </div>

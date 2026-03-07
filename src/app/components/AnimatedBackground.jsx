@@ -20,7 +20,7 @@ export function AnimatedBackground() {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    const particleCount = 80;
+    const particleCount = 30;
     const maxDistance = 150;
     const particles = [];
 

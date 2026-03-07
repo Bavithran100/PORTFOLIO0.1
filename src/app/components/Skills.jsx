@@ -38,32 +38,36 @@ export function Skills() {
 
   const codingProfiles = [
     {
-      platform: "GitHub",
-      username: "@Bavithran100",
-      stats: [
-        { label: "Projects", value: "5+" },
-        { label: "Tech Focus", value: "Backend + Full Stack" },
-        { label: "Status", value: "Active" },
-      ],
-    },
-    {
-      platform: "LeetCode",
-      username: "@bavithran",
-      stats: [
-        { label: "Practice", value: "Consistent" },
-        { label: "Focus", value: "DSA + Patterns" },
-        { label: "Goal", value: "Higher Contest Rank" },
-      ],
-    },
-    {
-      platform: "Hackathons",
-      username: "Team Participations",
-      stats: [
-        { label: "Hackathons", value: "3+" },
-        { label: "Projects Built", value: "Rapid MVPs" },
-        { label: "Strength", value: "Execution Speed" },
-      ],
-    },
+    platform: "LeetCode",
+    username: "@bavithran",
+    url: "https://leetcode.com/u/Bavithran777/",
+    stats: [
+      { label: "Problems Solved", value: "350+" },
+      { label: "Focus", value: "DSA + Patterns" },
+      { label: "Contest Rating", value: "1,606" },
+      {label:"Global Ranking",value:"188,740"}
+    ],
+  },
+  {
+    platform: "SkillRack",
+    username: "Bavithran",
+    url: "https://www.skillrack.com/faces/resume.xhtml?id=515212&key=4dc142e2f19dfe3c9faa7325a937c728c3caa2a8",
+    stats: [
+      { label: "Problems Solved", value: "1000+" },
+      { label: "Bronze Medals", value: "351" },
+      { label: "Certifications", value: "15+" },
+    ],
+  },
+  {
+    platform: "GeeksforGeeks",
+    username: "Bavithran",
+    url: "https://www.geeksforgeeks.org/profile/bavithrann77gf",
+    stats: [
+      { label: "Focus", value: "DSA + Algorithms" },
+      { label: "Topics", value: "Data Structures" },
+      { label: "Practice", value: "Problem Solving" },
+    ],
+  },
   ];
 
   const exploring = [
@@ -95,7 +99,7 @@ export function Skills() {
       id="skills"
       className="py-32 bg-[#0a0a0f] relative overflow-hidden ink-splash-section ink-splash-v4"
     >
-      <AnimatedBackground />
+      {/* <AnimatedBackground /> */}
       <div className="absolute inset-0 bg-gradient-to-b from-violet-900/5 via-transparent to-cyan-900/5"></div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -155,7 +159,7 @@ export function Skills() {
                     <Trophy className="text-cyan-400" size={28} />
                     <div>
                       <h4 className="text-2xl text-white">{profile.platform}</h4>
-                      <p className="text-cyan-400 text-sm">{profile.username}</p>
+                      <a  href={profile.url} target="_blank" className="text-cyan-400 text-sm">{profile.username}</a>
                     </div>
                   </div>
                   <div className="space-y-4">
