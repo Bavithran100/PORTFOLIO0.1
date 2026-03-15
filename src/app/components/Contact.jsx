@@ -65,7 +65,7 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-32 bg-[#0a0a0f] relative">
+    <section id="contact" className="py-32 bg-black relative">
       {/* <AnimatedBackground/> */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-violet-600/10 rounded-full blur-[150px]"></div>
 

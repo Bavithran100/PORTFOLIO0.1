@@ -10,7 +10,7 @@ import { Analytics } from '@vercel/analytics/react';
 export default function App() {
   return (
     
-    <div className="min-h-screen bg-[#0a0a0f] overflow-x-hidden relative">
+    <div className="min-h-screen bg-black overflow-x-hidden relative">
       <Analytics/>
       <AnimatedBackground />
       <div className="relative z-10">

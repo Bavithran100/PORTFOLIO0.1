@@ -97,7 +97,7 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="py-32 bg-[#0a0a0f] relative overflow-hidden ink-splash-section ink-splash-v4"
+      className="py-32 bg-black relative overflow-hidden ink-splash-section ink-splash-v4"
     >
       {/* <AnimatedBackground /> */}
       <div className="absolute inset-0 bg-gradient-to-b from-violet-900/5 via-transparent to-cyan-900/5"></div>

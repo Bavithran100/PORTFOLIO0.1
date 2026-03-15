@@ -81,7 +81,7 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" className="py-32 bg-[#0a0a0f] relative">
+    <section id="projects" className="py-32 bg-black relative">
       {/* <AnimatedBackground/> */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-600/10 rounded-full blur-[150px]"></div>
 
@@ -131,7 +131,7 @@ export function Projects() {
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-[#0a0a0f]/50 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
                 </div>
 
                 <div className="p-8">

@@ -21,11 +21,19 @@ const rotatingWords = [
 ];
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative bg-[#0a0a0f] overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative bg-black overflow-hidden">
       <AnimatedBackground/>
       <div className="hero-paint-splashes" aria-hidden="true">
-        <div className="hero-paint hero-paint-left"></div>
-        <div className="hero-paint hero-paint-right"></div>
+        <img
+          src="/image.png"
+          alt=""
+          className="hero-paint hero-paint-left"
+        />
+        <img
+          src="/image01.png"
+          alt=""
+          className="hero-paint hero-paint-right"
+        />
       </div>
       {/* <div className="absolute inset-0 bg-gradient-to-br from-violet-900/20 via-transparent to-cyan-900/20"></div>
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:100px_100px]"></div>

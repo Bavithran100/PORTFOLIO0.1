@@ -154,7 +154,7 @@ const certifications = [
   return (
     <section
       id="about"
-      className="py-32 bg-[#0a0a0f] relative overflow-hidden ink-splash-section ink-splash-v2"
+      className="py-32 bg-black relative overflow-hidden ink-splash-section ink-splash-v2"
     >
       {/* <AnimatedBackground /> */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-violet-900/5 to-transparent"></div>
