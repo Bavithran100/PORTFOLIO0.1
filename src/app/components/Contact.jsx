@@ -67,6 +67,18 @@ export function Contact() {
   return (
     <section id="contact" className="py-32 bg-black relative">
       {/* <AnimatedBackground/> */}
+        <div className="hero-paint-splashes" aria-hidden="true">
+        <img
+          src="/image.png"
+          alt=""
+          className="hero-paint hero-paint-left"
+        />
+        <img
+          src="/image01.png"
+          alt=""
+          className="hero-paint hero-paint-right"
+        />
+      </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-violet-600/10 rounded-full blur-[150px]"></div>
 
       <div className="container mx-auto px-6 relative z-10">

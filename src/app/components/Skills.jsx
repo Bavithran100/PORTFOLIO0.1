@@ -100,6 +100,18 @@ export function Skills() {
       className="py-32 bg-black relative overflow-hidden ink-splash-section ink-splash-v4"
     >
       {/* <AnimatedBackground /> */}
+        <div className="hero-paint-splashes" aria-hidden="true">
+        <img
+          src="/image03.png"
+          alt=""
+          className="hero-paint hero-paint-left"
+        />
+        <img
+          src="/image04.png"
+          alt=""
+          className="hero-paint hero-paint-right"
+        />
+      </div>
       <div className="absolute inset-0 bg-gradient-to-b from-violet-900/5 via-transparent to-cyan-900/5"></div>
 
       <div className="container mx-auto px-6 relative z-10">
