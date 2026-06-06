@@ -59,7 +59,7 @@ const devOpsTools = [
     {
       role: "Full-Stack Developer",
       company: "Personal & Team Projects",
-      period: "2023 - Present",
+      period: "2025 - Present",
       description:
         "Developed full-stack products with React and backend services, focusing on clean architecture, reliability, and production-ready deployment.",
     },

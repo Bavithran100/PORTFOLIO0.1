@@ -42,9 +42,14 @@ export function Navbar() {
         <div className="flex items-center justify-between h-20">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-2xl bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-violet-400 hover:from-cyan-300 hover:to-violet-300 transition-all"
+            className="group flex items-center gap-2.5 rounded-full border border-emerald-400/30 bg-emerald-400/[0.08] px-4 py-2 text-sm text-emerald-300 shadow-[0_0_22px_rgba(52,211,153,0.12)] backdrop-blur-md transition-all hover:border-emerald-300/60 hover:bg-emerald-400/[0.13] hover:shadow-[0_0_28px_rgba(52,211,153,0.22)]"
+            aria-label="Open to work - scroll to top"
           >
-            &lt;Bavith/&gt;
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60"></span>
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+            </span>
+            <span className="font-medium tracking-wide">Open to Work</span>
           </button>
 
           <div className="hidden md:flex items-center gap-8">
