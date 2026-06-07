@@ -134,7 +134,7 @@ and networking for production-ready applications.
                     BN
                   </span>
                   <img
-                    src="/public/Portfolio-photo.png"
+                    src="/Portfolio-photo.png"
                     alt="Bavithran Natarajan"
                     className="relative h-full w-full object-cover object-top"
                     onError={(event) => {
