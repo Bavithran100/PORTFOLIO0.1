@@ -12,12 +12,12 @@ export function Hero() {
   };
 
 const rotatingWords = [
-  "Full-Stack Engineer",
-  "Spring Boot Backend Developer",
-  "System Design Enthusiast",
-  "DSA Problem Solver",
-  "AI & Backend Integration",
-  "Building Scalable Systems"
+  "Backend Engineer",
+  "Distributed Systems Enthusiast",
+  "System Design Learner",
+  "Spring Boot Developer",
+  "Networking & OS Explorer",
+  "Problem Solver"
 ];
 
   return (

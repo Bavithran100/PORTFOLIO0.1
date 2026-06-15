@@ -11,8 +11,8 @@ export function Projects() {
       title: "ProctorX – Online Examination System",
       description:
         "A secure and scalable online examination platform with automated evaluation and session-based monitoring. Designed to ensure fairness, integrity, and efficiency in digital assessments.",
-      image:
-        "https://images.unsplash.com/photo-1762279388952-85187155e48d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmdXR1cmlzdGljJTIwdGVjaG5vbG9neSUyMGFic3RyYWN0fGVufDF8fHx8MTc3MDM4OTA5NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      image:"Proctorx.png",
+        // "https://images.unsplash.com/photo-1762279388952-85187155e48d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmdXR1cmlzdGljJTIwdGVjaG5vbG9neSUyMGFic3RyYWN0fGVufDF8fHx8MTc3MDM4OTA5NHww&ixlib=rb-4.1.0&q=80&w=1080",
       tags: ["React", "SpringBoot", "MySQL", "RestAPI"],
       githubUrl: "https://github.com/Bavithran100/ProctorXFrontend",
       liveUrl: "https://proctor-x-frontend.vercel.app/",
