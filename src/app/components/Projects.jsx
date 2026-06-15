@@ -12,6 +12,8 @@ function ProjectCard({ project }) {
         <img
           src={project.image}
           alt={`${project.name} project screenshot`}
+          loading="lazy"
+          decoding="async"
           className="h-full w-full object-cover object-top opacity-75 transition-all duration-700 ease-out group-hover:scale-105 group-hover:opacity-90"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#080808]/80 via-transparent to-transparent" />
@@ -51,16 +53,7 @@ function ProjectCard({ project }) {
 
 export function Projects() {
   return (
-    <section id="projects" className="projects-section relative overflow-hidden bg-black py-28 sm:py-32">
-      <div
-        className="absolute left-1/2 top-[18%] h-[34rem] w-[44rem] -translate-x-1/2 rounded-full bg-indigo-500/[0.055] blur-[150px]"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.014)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.014)_1px,transparent_1px)] bg-[size:88px_88px] [mask-image:linear-gradient(to_bottom,transparent,black_16%,black_85%,transparent)]"
-        aria-hidden="true"
-      />
-
+    <section id="projects" className="projects-section relative overflow-hidden bg-transparent py-28 sm:py-32">
       <div className="container relative z-10 mx-auto px-6">
         <div className="mx-auto max-w-6xl">
           <ScrollReveal className="mb-14 max-w-3xl sm:mb-16">

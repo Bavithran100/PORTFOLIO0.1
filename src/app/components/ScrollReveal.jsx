@@ -1,62 +1,40 @@
-import { useEffect, useRef, useState } from "react";
+import { m as Motion, useReducedMotion } from "framer-motion";
 
-const animationClasses = {
-  "fade-up": "reveal-fade-up",
-  "fade-left": "reveal-fade-left",
-  "fade-right": "reveal-fade-right",
-  "fade-down": "reveal-fade-down",
-  "scale-in": "reveal-scale-in",
-  "scale-bounce": "reveal-scale-bounce",
+const directions = {
+  "fade-up": { x: 0, y: 22 },
+  "fade-left": { x: -22, y: 0 },
+  "fade-right": { x: 22, y: 0 },
+  "fade-down": { x: 0, y: -22 },
+  "scale-in": { x: 0, y: 8, scale: 0.985 },
+  "scale-bounce": { x: 0, y: 8, scale: 0.975 },
 };
 
 export function ScrollReveal({
   children,
   animation = "fade-up",
-  threshold = 0.15,
+  threshold = 0.12,
   delay = 0,
   className = "",
   once = true,
-  as: Tag = "div",
+  as = "div",
 }) {
-  const ref = useRef(null);
-  const [revealed, setRevealed] = useState(false);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setRevealed(true);
-          if (once) {
-            observer.unobserve(node);
-          }
-        } else if (!once) {
-          setRevealed(false);
-        }
-      },
-      {
-        threshold,
-        rootMargin: "0px 0px -40px 0px",
-      }
-    );
-
-    observer.observe(node);
-    return () => observer.unobserve(node);
-  }, [threshold, once]);
-
-  const animClass = animationClasses[animation] || "reveal-fade-up";
+  const reduceMotion = useReducedMotion();
+  const MotionTag = Motion[as] || Motion.div;
+  const initial = reduceMotion ? false : { opacity: 0, ...directions[animation] };
 
   return (
-    <Tag
-      ref={ref}
-      className={`reveal ${animClass} ${revealed ? "revealed" : ""} ${className}`}
-      style={{
-        animationDelay: revealed ? `${delay}ms` : "0ms",
+    <MotionTag
+      className={className}
+      initial={initial}
+      whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+      viewport={{ once, amount: threshold }}
+      transition={{
+        duration: 0.65,
+        delay: delay / 1000,
+        ease: [0.16, 1, 0.3, 1],
       }}
     >
       {children}
-    </Tag>
+    </MotionTag>
   );
 }

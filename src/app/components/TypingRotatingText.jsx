@@ -25,14 +25,16 @@ export function TypingRotatingText({
     }
 
     if (!isDeleting && currentText === currentWord) {
-      setIsPaused(true);
-      return;
+      const pauseStartTimeout = setTimeout(() => setIsPaused(true), 0);
+      return () => clearTimeout(pauseStartTimeout);
     }
 
     if (isDeleting && currentText === "") {
-      setIsDeleting(false);
-      setCurrentWordIndex((prev) => (prev + 1) % words.length);
-      return;
+      const nextWordTimeout = setTimeout(() => {
+        setIsDeleting(false);
+        setCurrentWordIndex((prev) => (prev + 1) % words.length);
+      }, 0);
+      return () => clearTimeout(nextWordTimeout);
     }
 
     const timeout = setTimeout(() => {
@@ -58,7 +60,7 @@ export function TypingRotatingText({
   return (
     <span className={className}>
       {currentText}
-      <span className="animate-pulse text-cyan-400 ml-1">|</span>
+      <span className="ml-1 text-cyan-400 opacity-75">|</span>
     </span>
   );
 }

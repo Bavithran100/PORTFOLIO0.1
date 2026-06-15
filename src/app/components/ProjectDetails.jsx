@@ -1,4 +1,5 @@
 import { createElement } from "react";
+import { m as Motion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -36,12 +37,12 @@ function BulletList({ items, icon = Check }) {
 
 export function ProjectDetails({ project }) {
   return (
-    <main className="case-study-page min-h-screen bg-[#030303] text-white">
-      <div
-        className="absolute left-1/2 top-20 h-[32rem] w-[42rem] -translate-x-1/2 rounded-full bg-indigo-500/[0.07] blur-[160px]"
-        aria-hidden="true"
-      />
-
+    <Motion.main
+      className="case-study-page relative min-h-screen bg-transparent text-white"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+    >
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-24 pt-8 sm:pt-12">
         <button
           type="button"
@@ -52,7 +53,7 @@ export function ProjectDetails({ project }) {
           Back to portfolio
         </button>
 
-        <header className="case-study-enter mt-16 max-w-4xl">
+        <header className="mt-16 max-w-4xl">
           <span className="project-category-badge">{project.category}</span>
           <h1 className="mt-6 text-5xl font-semibold tracking-[-0.055em] sm:text-6xl md:text-7xl">
             {project.name}
@@ -68,15 +69,16 @@ export function ProjectDetails({ project }) {
           </div>
         </header>
 
-        <div className="case-study-enter mt-14 overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] p-2 [animation-delay:100ms]">
+        <div className="mt-14 overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] p-2">
           <img
             src={project.image}
             alt={`${project.name} project screenshot`}
+            decoding="async"
             className="max-h-[38rem] w-full rounded-xl object-cover object-top"
           />
         </div>
 
-        <div className="case-study-enter mt-20 [animation-delay:180ms]">
+        <div className="mt-20">
           <DetailSection number="01" title="Project Overview">
             <p>{project.overview}</p>
           </DetailSection>
@@ -130,6 +132,6 @@ export function ProjectDetails({ project }) {
           )}
         </div>
       </div>
-    </main>
+    </Motion.main>
   );
 }

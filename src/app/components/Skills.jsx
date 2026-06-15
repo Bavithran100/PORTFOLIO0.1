@@ -155,21 +155,8 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="engineering-section relative overflow-hidden bg-[#030303] py-28 sm:py-32"
+      className="engineering-section relative overflow-hidden bg-transparent py-28 sm:py-32"
     >
-      <div
-        className="absolute -left-40 top-[12%] h-[34rem] w-[34rem] rounded-full bg-cyan-500/[0.055] blur-[150px]"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute -right-44 bottom-[12%] h-[38rem] w-[38rem] rounded-full bg-violet-500/[0.055] blur-[160px]"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.014)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.014)_1px,transparent_1px)] bg-[size:92px_92px] [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]"
-        aria-hidden="true"
-      />
-
       <div className="container relative z-10 mx-auto px-6">
         <div className="mx-auto max-w-6xl">
           <ScrollReveal className="mb-16 max-w-3xl sm:mb-20">

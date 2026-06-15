@@ -62,7 +62,12 @@ export function Navbar() {
 
   const scrollToSection = (id) => {
     setActiveSection(id);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const section = document.getElementById(id);
+    if (section && window.lenis) {
+      window.lenis.scrollTo(section, { offset: -64 });
+    } else {
+      section?.scrollIntoView();
+    }
     setIsMobileMenuOpen(false);
   };
 

@@ -151,17 +151,7 @@ export function About() {
   const [activeTab, setActiveTab] = useState("impact");
 
   return (
-    <section id="about" className="about-section relative overflow-hidden bg-[#030303] py-28 sm:py-32">
-      <div className="about-aurora" aria-hidden="true">
-        <div className="about-aurora-blob about-aurora-cyan" />
-        <div className="about-aurora-blob about-aurora-violet" />
-        <div className="about-aurora-blob about-aurora-indigo" />
-      </div>
-      <div
-        className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.016)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.016)_1px,transparent_1px)] bg-[size:80px_80px] [mask-image:linear-gradient(to_bottom,transparent,black_18%,black_80%,transparent)]"
-        aria-hidden="true"
-      />
-
+    <section id="about" className="about-section relative overflow-hidden bg-transparent py-28 sm:py-32">
       <div className="container relative z-10 mx-auto px-6">
         <div className="mx-auto max-w-6xl">
           <ScrollReveal className="mb-16 max-w-3xl sm:mb-20">

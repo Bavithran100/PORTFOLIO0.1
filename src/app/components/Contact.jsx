@@ -112,20 +112,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="contact-section relative overflow-hidden bg-black py-28 sm:py-32">
-      <div
-        className="absolute left-[8%] top-[12%] h-[30rem] w-[30rem] rounded-full bg-cyan-500/[0.045] blur-[150px]"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-[8%] right-[4%] h-[34rem] w-[34rem] rounded-full bg-violet-500/[0.05] blur-[160px]"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.014)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.014)_1px,transparent_1px)] bg-[size:96px_96px] [mask-image:linear-gradient(to_bottom,transparent,black_14%,black_88%,transparent)]"
-        aria-hidden="true"
-      />
-
+    <section id="contact" className="contact-section relative overflow-hidden bg-transparent py-28 sm:py-32">
       <div className="container relative z-10 mx-auto px-6">
         <div className="mx-auto max-w-6xl">
           <ScrollReveal className="mb-16 max-w-4xl sm:mb-20">

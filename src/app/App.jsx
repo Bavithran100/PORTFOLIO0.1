@@ -5,10 +5,12 @@ import { About } from "./components/About";
 import { Projects } from "./components/Projects";
 import { Skills } from "./components/Skills";
 import { Contact } from "./components/Contact";
-import { AnimatedBackground } from "./components/AnimatedBackground";
 import { Analytics } from '@vercel/analytics/react';
 import { ProjectDetails } from "./components/ProjectDetails";
 import { getProjectBySlug } from "./data/projects";
+import { AmbientBackground } from "./components/AmbientBackground";
+import { SmoothScroll } from "./components/SmoothScroll";
+import { LazyMotion, domAnimation } from "framer-motion";
 
 export default function App() {
   const [pathname, setPathname] = useState(window.location.pathname);
@@ -24,26 +26,32 @@ export default function App() {
 
   if (project) {
     return (
-      <>
-        <Analytics />
-        <ProjectDetails project={project} />
-      </>
+      <LazyMotion features={domAnimation}>
+        <div className="min-h-screen bg-[#030303]">
+          <Analytics />
+          <SmoothScroll />
+          <AmbientBackground />
+          <ProjectDetails project={project} />
+        </div>
+      </LazyMotion>
     );
   }
 
   return (
-    
-    <div className="min-h-screen bg-black overflow-x-hidden relative">
-      <Analytics/>
-      <AnimatedBackground />
-      <div className="relative z-10">
-        <Navbar />
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
+    <LazyMotion features={domAnimation}>
+      <div className="min-h-screen bg-black overflow-x-hidden relative">
+        <Analytics/>
+        <SmoothScroll />
+        <AmbientBackground />
+        <div className="relative z-10">
+          <Navbar />
+          <Hero />
+          <About />
+          <Projects />
+          <Skills />
+          <Contact />
+        </div>
       </div>
-    </div>
+    </LazyMotion>
   );
 }

@@ -6,10 +6,19 @@ export function navigate(path) {
   const hash = path.includes("#") ? path.split("#")[1] : "";
   if (hash) {
     requestAnimationFrame(() => {
-      document.getElementById(hash)?.scrollIntoView({ behavior: "smooth" });
+      const target = document.getElementById(hash);
+      if (target && window.lenis) {
+        window.lenis.scrollTo(target, { offset: -64 });
+      } else {
+        target?.scrollIntoView();
+      }
     });
     return;
   }
 
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  if (window.lenis) {
+    window.lenis.scrollTo(0);
+  } else {
+    window.scrollTo({ top: 0 });
+  }
 }

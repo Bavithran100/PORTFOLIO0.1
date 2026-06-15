@@ -10,9 +10,28 @@ import {
   MapPin,
 } from "lucide-react";
 import { createElement } from "react";
-import { AnimatedBackground } from "./AnimatedBackground";
+import { m as Motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { TypingRotatingText } from "./TypingRotatingText";
+
+const heroContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.09,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const heroItem = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
+  },
+};
 
 const rotatingRoles = [
   "Backend Engineer",
@@ -65,33 +84,28 @@ const socialLinks = [
 
 export function Hero() {
   const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const section = document.getElementById(id);
+    if (section && window.lenis) {
+      window.lenis.scrollTo(section, { offset: -64 });
+    } else {
+      section?.scrollIntoView();
+    }
   };
 
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden bg-black px-0 pb-20 pt-28 lg:pb-24 lg:pt-32"
+      className="relative flex min-h-screen items-center overflow-hidden bg-transparent px-0 pb-20 pt-28 lg:pb-24 lg:pt-32"
     >
-      <AnimatedBackground subtle />
-      <div className="absolute inset-0 z-[1] bg-black/55" aria-hidden="true" />
-      <div
-        className="absolute left-[8%] top-[12%] z-[2] h-[30rem] w-[30rem] rounded-full bg-cyan-500/[0.08] blur-[140px]"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-[8%] right-[4%] z-[2] h-[34rem] w-[34rem] rounded-full bg-violet-500/[0.09] blur-[150px]"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0 z-[2] bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
-        aria-hidden="true"
-      />
-
       <div className="container relative z-10 mx-auto px-6">
         <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
-          <div className="text-center lg:text-left">
-            <div className="hero-reveal" style={{ "--hero-delay": "80ms" }}>
+          <Motion.div
+            className="text-center lg:text-left"
+            variants={heroContainer}
+            initial="hidden"
+            animate="visible"
+          >
+            <Motion.div variants={heroItem}>
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-medium tracking-[0.18em] text-zinc-300 uppercase backdrop-blur-sm">
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
                 Software Engineer
@@ -109,12 +123,9 @@ export function Hero() {
                   pauseTime={1800}
                 />
               </h2>
-            </div>
+            </Motion.div>
 
-            <div
-              className="hero-reveal mt-6 max-w-2xl space-y-3 text-base leading-7 text-zinc-400 sm:text-lg"
-              style={{ "--hero-delay": "180ms" }}
-            >
+            <Motion.div variants={heroItem} className="mt-6 max-w-2xl space-y-3 text-base leading-7 text-zinc-400 sm:text-lg">
               <p>
                 I build backend systems using Java, Spring Boot, MySQL, and Docker while
                 exploring AI applications, distributed systems, networking, and operating
@@ -124,32 +135,28 @@ export function Hero() {
                 Passionate about understanding how modern software works, from LLM-powered
                 applications to scalable production architectures.
               </p>
-            </div>
+            </Motion.div>
 
-            <div
-              className="hero-reveal mt-7 max-w-2xl"
-              style={{ "--hero-delay": "280ms" }}
-            >
+            <Motion.div variants={heroItem} className="mt-7 max-w-2xl">
               <p className="mb-3 text-xs font-semibold tracking-[0.16em] text-zinc-500 uppercase">
                 Currently Focused On
               </p>
               <div className="flex flex-wrap justify-center gap-2 lg:justify-start">
                 {focusAreas.map((area, index) => (
-                  <span
+                  <Motion.span
                     key={area}
-                    className="hero-tag-reveal rounded-full border border-white/10 bg-white/[0.045] px-3 py-1.5 text-xs font-medium text-zinc-300 backdrop-blur-sm transition-colors duration-300 hover:border-cyan-300/30 hover:bg-cyan-300/[0.07] hover:text-cyan-100"
-                    style={{ "--tag-delay": `${380 + index * 55}ms` }}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.42 + index * 0.045, duration: 0.45 }}
+                    className="rounded-full border border-white/10 bg-white/[0.045] px-3 py-1.5 text-xs font-medium text-zinc-300 backdrop-blur-sm transition-colors duration-300 hover:border-cyan-300/30 hover:bg-cyan-300/[0.07] hover:text-cyan-100"
                   >
                     {area}
-                  </span>
+                  </Motion.span>
                 ))}
               </div>
-            </div>
+            </Motion.div>
 
-            <div
-              className="hero-reveal mt-8 flex flex-wrap justify-center gap-3 lg:justify-start"
-              style={{ "--hero-delay": "760ms" }}
-            >
+            <Motion.div variants={heroItem} className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
               <Button
                 size="lg"
                 onClick={() => scrollToSection("projects")}
@@ -179,12 +186,9 @@ export function Hero() {
                 <FileText />
                 View Resume
               </Button>
-            </div>
+            </Motion.div>
 
-            <div
-              className="hero-reveal mt-7 flex justify-center gap-2 lg:justify-start"
-              style={{ "--hero-delay": "860ms" }}
-            >
+            <Motion.div variants={heroItem} className="mt-7 flex justify-center gap-2 lg:justify-start">
               {socialLinks.map(({ label, href, icon }) => (
                 <a
                   key={label}
@@ -200,24 +204,23 @@ export function Hero() {
                   })}
                 </a>
               ))}
-            </div>
+            </Motion.div>
 
-            <div
-              className="hero-reveal mt-6 grid max-w-xl grid-cols-3 divide-x divide-white/10 border-y border-white/10 py-4 text-left"
-              style={{ "--hero-delay": "940ms" }}
-            >
+            <Motion.div variants={heroItem} className="mt-6 grid max-w-xl grid-cols-3 divide-x divide-white/10 border-y border-white/10 py-4 text-left">
               {stats.map(({ value, label }) => (
                 <div key={label} className="px-3 first:pl-0 sm:px-5 sm:first:pl-0">
                   <p className="text-sm font-semibold text-white sm:text-base">{value}</p>
                   <p className="mt-0.5 text-[10px] leading-4 text-zinc-500 sm:text-xs">{label}</p>
                 </div>
               ))}
-            </div>
-          </div>
+            </Motion.div>
+          </Motion.div>
 
-          <div
-            className="hero-reveal mx-auto w-full max-w-sm"
-            style={{ "--hero-delay": "320ms" }}
+          <Motion.div
+            className="mx-auto w-full max-w-sm"
+            initial={{ opacity: 0, y: 18, scale: 0.985 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ delay: 0.24, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="hero-card-float">
               <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.045] p-2 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-xl">
@@ -227,9 +230,10 @@ export function Hero() {
                       BN
                     </span>
                     <img
-                      src="/Portfolio-photo.png"
-                      alt="Bavithran Natarajan"
-                      className="relative h-full w-full object-cover object-top"
+                    src="/Portfolio-photo.png"
+                    alt="Bavithran Natarajan"
+                    decoding="async"
+                    className="relative h-full w-full object-cover object-top"
                       onError={(event) => {
                         event.currentTarget.style.display = "none";
                       }}
@@ -253,7 +257,7 @@ export function Hero() {
                 </div>
               </div>
             </div>
-          </div>
+          </Motion.div>
         </div>
       </div>
 
