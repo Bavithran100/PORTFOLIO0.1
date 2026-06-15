@@ -1,219 +1,357 @@
-import { useState } from "react";
-import { Mail, MapPin, Phone, Send, FileText } from "lucide-react";
+import { createElement, useState } from "react";
+import {
+  ArrowUpRight,
+  Check,
+  CheckCircle2,
+  Github,
+  Linkedin,
+  LoaderCircle,
+  Mail,
+  MapPin,
+  Phone,
+  Send,
+  Sparkles,
+  XCircle,
+} from "lucide-react";
 import emailjs from "@emailjs/browser";
-
-import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import { AnimatedBackground } from "./AnimatedBackground";
+import { ScrollReveal } from "./ScrollReveal";
+
+const contactInfo = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: "bavithran.n2024ece@sece.ac.in",
+    href: "mailto:bavithran.n2024ece@sece.ac.in",
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+91 93447 43117",
+    href: "tel:+919344743117",
+  },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: "Coimbatore, India",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "Bavithran Natarajan",
+    href: "https://www.linkedin.com/in/bavithran-n-04b74b333/",
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    value: "@Bavithran100",
+    href: "https://github.com/Bavithran100",
+  },
+];
+
+const currentFocus = [
+  {
+    label: "Learning",
+    topics: ["System Design", "Distributed Systems", "Operating Systems", "Networking"],
+  },
+  {
+    label: "Building",
+    topics: ["Backend Applications", "AI-Powered Projects"],
+  },
+];
+
+const conversationTopics = [
+  "Spring Boot",
+  "AI Engineering",
+  "System Design",
+  "Distributed Systems",
+  "Computer Networks",
+  "Operating Systems",
+  "Research Projects",
+  "Hackathons",
+];
+
+const opportunities = [
+  "Software Engineering Internships",
+  "Backend Engineering Opportunities",
+  "Research Collaborations",
+  "Hackathons",
+  "Open Source Contributions",
+];
 
 export function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("idle");
 
-  const [loading, setLoading] = useState(false);
+  const updateField = (field, value) => {
+    setFormData((current) => ({ ...current, [field]: value }));
+    if (status !== "idle") setStatus("idle");
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setStatus("loading");
 
-    emailjs
-      .send(
-        "service_4r0rk3c", // ✅ EmailJS Service ID
-        "template_g2qn9p8", // ✅ EmailJS Template ID
+    try {
+      await emailjs.send(
+        "service_4r0rk3c",
+        "template_g2qn9p8",
         {
           name: formData.name,
           email: formData.email,
           message: formData.message,
         },
-        "9wM6YDgq2Ep_j2omc" // ✅ EmailJS Public Key
-      )
-      .then(() => {
-        alert("Message sent successfully!");
-        setFormData({ name: "", email: "", message: "" });
-      })
-      .catch(() => {
-        alert("Failed to send message. Please try again later.");
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+        "9wM6YDgq2Ep_j2omc",
+      );
+      setFormData({ name: "", email: "", message: "" });
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "bavithran.n2024ece@sece.ac.in",
-      href: "mailto:bavithran.n2024ece@sece.ac.in",
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+91 93447 43117",
-      href: "tel:+919344743117",
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "India",
-      href: "#",
-    },
-  ];
-
   return (
-    <section id="contact" className="py-32 bg-black relative">
-      {/* <AnimatedBackground/> */}
-        <div className="hero-paint-splashes" aria-hidden="true">
-        <img
-          src="/image.png"
-          alt=""
-          className="hero-paint hero-paint-left"
-        />
-        <img
-          src="/image01.png"
-          alt=""
-          className="hero-paint hero-paint-right"
-        />
-      </div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-violet-600/10 rounded-full blur-[150px]"></div>
+    <section id="contact" className="contact-section relative overflow-hidden bg-black py-28 sm:py-32">
+      <div
+        className="absolute left-[8%] top-[12%] h-[30rem] w-[30rem] rounded-full bg-cyan-500/[0.045] blur-[150px]"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-[8%] right-[4%] h-[34rem] w-[34rem] rounded-full bg-violet-500/[0.05] blur-[160px]"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.014)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.014)_1px,transparent_1px)] bg-[size:96px_96px] [mask-image:linear-gradient(to_bottom,transparent,black_14%,black_88%,transparent)]"
+        aria-hidden="true"
+      />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-violet-400">
-              Get In Touch
+      <div className="container relative z-10 mx-auto px-6">
+        <div className="mx-auto max-w-6xl">
+          <ScrollReveal className="mb-16 max-w-4xl sm:mb-20">
+            <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-cyan-300 uppercase">
+              Contact
+            </p>
+            <h2 className="text-4xl font-semibold tracking-[-0.045em] text-white sm:text-5xl md:text-6xl">
+              Start an engineering
+              <span className="block text-zinc-500">conversation.</span>
             </h2>
-            <div className="h-1 w-24 mx-auto bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full mb-6"></div>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Have a project in mind? Let's collaborate and create something
-              amazing together.
-            </p>
+            <div className="mt-6 max-w-3xl space-y-3 text-base leading-7 text-zinc-400 sm:text-lg">
+              <p>
+                Interested in backend engineering, AI-powered applications, system design, or
+                research-driven projects?
+              </p>
+              <p>
+                I&apos;m always open to discussing technology, collaboration, internships,
+                research opportunities, and interesting engineering challenges.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid gap-5 lg:grid-cols-[1.12fr_0.88fr]">
+            <ScrollReveal className="h-full">
+              <article className="contact-card h-full p-6 sm:p-8">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="contact-label">01 / Contact Form</p>
+                    <h3 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-white">
+                      Tell me what you&apos;re working on
+                    </h3>
+                  </div>
+                  <div className="contact-icon">
+                    <Send size={17} />
+                  </div>
+                </div>
+
+                <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+                  <div>
+                    <label htmlFor="name" className="contact-field-label">
+                      Name
+                    </label>
+                    <Input
+                      id="name"
+                      type="text"
+                      value={formData.name}
+                      onChange={(event) => updateField("name", event.target.value)}
+                      required
+                      disabled={status === "loading"}
+                      className="contact-input"
+                      placeholder="Your name"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="contact-field-label">
+                      Email
+                    </label>
+                    <Input
+                      id="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(event) => updateField("email", event.target.value)}
+                      required
+                      disabled={status === "loading"}
+                      className="contact-input"
+                      placeholder="you@example.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="contact-field-label">
+                      Message
+                    </label>
+                    <Textarea
+                      id="message"
+                      value={formData.message}
+                      onChange={(event) => updateField("message", event.target.value)}
+                      required
+                      disabled={status === "loading"}
+                      rows={6}
+                      className="contact-input min-h-36 resize-none"
+                      placeholder="Share the opportunity, project, or engineering challenge..."
+                    />
+                  </div>
+
+                  {status === "success" && (
+                    <div className="contact-status contact-status-success" role="status">
+                      <CheckCircle2 size={17} />
+                      Message sent successfully. I&apos;ll get back to you soon.
+                    </div>
+                  )}
+
+                  {status === "error" && (
+                    <div className="contact-status contact-status-error" role="alert">
+                      <XCircle size={17} />
+                      The message could not be sent. Please try again or email me directly.
+                    </div>
+                  )}
+
+                  <button type="submit" disabled={status === "loading"} className="contact-submit group">
+                    {status === "loading" ? (
+                      <LoaderCircle size={17} className="animate-spin" />
+                    ) : status === "success" ? (
+                      <Check size={17} />
+                    ) : (
+                      <Send size={17} />
+                    )}
+                    {status === "loading"
+                      ? "Sending Message..."
+                      : status === "success"
+                        ? "Conversation Started"
+                        : "Start a Conversation"}
+                    {status === "idle" && (
+                      <ArrowUpRight
+                        size={15}
+                        className="ml-auto transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      />
+                    )}
+                  </button>
+                </form>
+              </article>
+            </ScrollReveal>
+
+            <div className="grid gap-5">
+              <ScrollReveal delay={80}>
+                <article className="contact-card p-6 sm:p-7">
+                  <p className="contact-label">02 / Contact Information</p>
+                  <div className="mt-6 grid gap-1">
+                    {contactInfo.map(({ icon, label, value, href }) => {
+                      const content = (
+                        <>
+                          <div className="contact-icon">{createElement(icon, { size: 16 })}</div>
+                          <div className="min-w-0">
+                            <p className="text-[10px] font-semibold tracking-[0.12em] text-zinc-600 uppercase">
+                              {label}
+                            </p>
+                            <p className="mt-1 truncate text-sm text-zinc-300">{value}</p>
+                          </div>
+                          {href && <ArrowUpRight size={14} className="ml-auto text-zinc-700" />}
+                        </>
+                      );
+
+                      return href ? (
+                        <a
+                          key={label}
+                          href={href}
+                          target={href.startsWith("http") ? "_blank" : undefined}
+                          rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                          className="contact-info-row group"
+                        >
+                          {content}
+                        </a>
+                      ) : (
+                        <div key={label} className="contact-info-row">
+                          {content}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </article>
+              </ScrollReveal>
+
+              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                <ScrollReveal delay={140} className="h-full">
+                  <article className="contact-card h-full p-6">
+                    <p className="contact-label">03 / Current Focus</p>
+                    <div className="mt-6 space-y-6">
+                      {currentFocus.map(({ label, topics }) => (
+                        <div key={label}>
+                          <p className="text-xs font-semibold text-zinc-300">{label}</p>
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            {topics.map((topic) => (
+                              <span key={topic} className="contact-pill">
+                                {topic}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </article>
+                </ScrollReveal>
+
+                <ScrollReveal delay={200} className="h-full">
+                  <article className="contact-card h-full p-6">
+                    <p className="contact-label">04 / Let&apos;s Talk About</p>
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {conversationTopics.map((topic) => (
+                        <span key={topic} className="contact-pill">
+                          {topic}
+                        </span>
+                      ))}
+                    </div>
+                  </article>
+                </ScrollReveal>
+              </div>
+            </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div className="glassmorphism p-10 rounded-2xl border border-white/10">
-              <h3 className="text-3xl text-white mb-8">Send a Message</h3>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-gray-300 mb-2">
-                    Name
-                  </label>
-                  <Input
-                    id="name"
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    required
-                    className="w-full bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-cyan-500/50 focus:ring-cyan-500/20 rounded-lg"
-                    placeholder="Your name"
-                  />
+          <ScrollReveal className="mt-6">
+            <article className="contact-availability-card">
+              <div>
+                <div className="flex items-center gap-2.5">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                  <p className="contact-label text-emerald-300">Open To</p>
                 </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-gray-300 mb-2">
-                    Email
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    required
-                    className="w-full bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-cyan-500/50 focus:ring-cyan-500/20 rounded-lg"
-                    placeholder="your@email.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-gray-300 mb-2">
-                    Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    value={formData.message}
-                    onChange={(e) =>
-                      setFormData({ ...formData, message: e.target.value })
-                    }
-                    required
-                    rows={5}
-                    className="w-full bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-cyan-500/50 focus:ring-cyan-500/20 rounded-lg resize-none"
-                    placeholder="Tell me about your project..."
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full bg-gradient-to-r from-cyan-500 to-violet-600 hover:from-cyan-400 hover:to-violet-500 text-white rounded-lg shadow-[0_0_30px_rgba(0,212,255,0.3)] hover:shadow-[0_0_40px_rgba(0,212,255,0.5)] transition-all"
-                >
-                  <Send size={20} className="mr-2" />
-                  {loading ? "Sending..." : "Send Message"}
-                </Button>
-              </form>
-            </div>
-
-            <div className="space-y-8">
-              <div className="glassmorphism p-10 rounded-2xl border border-white/10">
-                <h3 className="text-3xl text-white mb-8">
-                  Contact Information
+                <h3 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-white">
+                  Opportunities to learn, build, and contribute
                 </h3>
-                <div className="space-y-6">
-                  {contactInfo.map((info, index) => (
-                    <a
-                      key={index}
-                      href={info.href}
-                      className="flex items-start gap-4 group hover:translate-x-2 transition-transform"
-                    >
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-violet-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 group-hover:shadow-[0_0_20px_rgba(0,212,255,0.3)] transition-shadow flex-shrink-0">
-                        <info.icon size={20} />
-                      </div>
-                      <div>
-                        <div className="text-sm text-gray-400 mb-1">
-                          {info.label}
-                        </div>
-                        <div className="text-white group-hover:text-cyan-400 transition-colors">
-                          {info.value}
-                        </div>
-                      </div>
-                    </a>
-                  ))}
-                </div>
               </div>
-
-              <div className="glassmorphism p-10 rounded-2xl border border-white/10">
-                <h3 className="text-2xl text-white mb-4">Availability</h3>
-                <p className="text-gray-400 leading-relaxed mb-4">
-                  Currently available for freelance projects and full-time
-                  opportunities.
-                </p>
-                <div className="flex items-center gap-2 mb-6">
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
-                  <span className="text-green-400">Available for work</span>
-                </div>
-                <Button
-                  onClick={() => window.open("https://drive.google.com/file/d/1kkRXo_uQL6WwQ1gWp6iT4BOZp-jVGGIY/view?usp=sharing", "_blank")}
-                  className="w-full bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-400 hover:to-cyan-500 text-white rounded-lg shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all"
-                >
-                  <FileText size={18} className="mr-2" />
-                  Download Resume
-                </Button>
+              <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                {opportunities.map((opportunity) => (
+                  <div key={opportunity} className="contact-opportunity">
+                    <Sparkles size={13} />
+                    {opportunity}
+                  </div>
+                ))}
               </div>
-            </div>
-          </div>
+            </article>
+          </ScrollReveal>
 
-          <div className="mt-20 pt-10 border-t border-white/10 text-center">
-            <p className="text-gray-400">
-              (c) 2026 Bavithran . Crafted with passion and cutting-edge tech.
-            </p>
-          </div>
+          <footer className="mt-20 border-t border-white/[0.07] pt-8 text-center text-xs leading-6 text-zinc-600">
+            <p>Designed and developed by Bavithran Natarajan.</p>
+            <p>Built with React, TypeScript, and Tailwind CSS.</p>
+          </footer>
         </div>
       </div>
     </section>

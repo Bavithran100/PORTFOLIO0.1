@@ -1,370 +1,350 @@
-import { useState } from "react";
-import { GraduationCap, Briefcase, Code2, Award } from "lucide-react";
-import { AnimatedBackground } from "./AnimatedBackground";
+import { createElement, useState } from "react";
+import {
+  ArrowUpRight,
+  Blocks,
+  BrainCircuit,
+  Braces,
+  Cloud,
+  Code2,
+  Container,
+  Cpu,
+  Database,
+  GitBranch,
+  Layers3,
+  Network,
+  Orbit,
+  Server,
+  Sparkles,
+  Workflow,
+} from "lucide-react";
+import { ScrollReveal } from "./ScrollReveal";
+
+const interests = [
+  {
+    title: "Backend Engineering",
+    description: "Reliable services, expressive APIs, and maintainable application architecture.",
+    icon: Server,
+  },
+  {
+    title: "Distributed Systems",
+    description: "How services coordinate, recover, and remain dependable as systems grow.",
+    icon: GitBranch,
+  },
+  {
+    title: "Operating Systems",
+    description: "Processes, memory, concurrency, and the foundations beneath applications.",
+    icon: Cpu,
+  },
+  {
+    title: "Computer Networks",
+    description: "Protocols, request paths, latency, and communication across system boundaries.",
+    icon: Network,
+  },
+  {
+    title: "Generative AI",
+    description: "Grounded AI applications, RAG pipelines, and useful LLM-powered workflows.",
+    icon: BrainCircuit,
+  },
+  {
+    title: "System Design",
+    description: "Practical tradeoffs around scale, reliability, data, and service boundaries.",
+    icon: Workflow,
+  },
+  {
+    title: "Cloud Infrastructure",
+    description: "Containerized delivery, deployment workflows, and production environments.",
+    icon: Cloud,
+  },
+];
+
+const journey = [
+  {
+    phase: "Foundation",
+    title: "Java & problem solving",
+    description: "Built programming fluency through Java, OOP, data structures, and algorithms.",
+  },
+  {
+    phase: "Application",
+    title: "Backend development",
+    description: "Moved into Spring Boot, REST APIs, authentication, and relational data modeling.",
+  },
+  {
+    phase: "Delivery",
+    title: "Production thinking",
+    description: "Started containerizing applications with Docker and exploring deployment workflows.",
+  },
+  {
+    phase: "Architecture",
+    title: "System design",
+    description: "Studying scalability, caching, service boundaries, networking, and reliability.",
+  },
+  {
+    phase: "Intelligence",
+    title: "AI engineering",
+    description: "Exploring generative AI, RAG, and how intelligent features fit into real systems.",
+  },
+];
+
+const impactAreas = [
+  {
+    title: "Backend architecture",
+    description:
+      "Designed modular Spring Boot applications with clear service boundaries and maintainable domain logic.",
+    tags: ["Java", "Spring Boot", "Clean Architecture"],
+    icon: Blocks,
+  },
+  {
+    title: "API & data design",
+    description:
+      "Built REST APIs, authentication flows, and database models around practical product requirements.",
+    tags: ["REST APIs", "MySQL", "JWT / OAuth2"],
+    icon: Database,
+  },
+  {
+    title: "Reliable delivery",
+    description:
+      "Containerized services and improved repeatability across development and deployment environments.",
+    tags: ["Docker", "Nginx", "CI/CD"],
+    icon: Container,
+  },
+  {
+    title: "Scalability mindset",
+    description:
+      "Applied caching, asynchronous thinking, and system design principles while evaluating tradeoffs.",
+    tags: ["Redis", "System Design", "Distributed Systems"],
+    icon: Orbit,
+  },
+];
+
+const skillGroups = [
+  {
+    title: "Backend & Data",
+    skills: ["Java", "Spring Boot", "REST APIs", "MySQL", "MongoDB", "Redis", "OAuth2 / JWT"],
+  },
+  {
+    title: "Infrastructure & Tools",
+    skills: ["Docker", "Nginx", "AWS", "CI/CD", "Git & GitHub", "Linux"],
+  },
+  {
+    title: "AI & Application",
+    skills: ["Generative AI", "RAG", "React", "Node.js", "JavaScript", "Tailwind CSS"],
+  },
+  {
+    title: "Computer Science Fundamentals",
+    skills: [
+      "Data Structures",
+      "Algorithms",
+      "Operating Systems",
+      "Computer Networks",
+      "Database Systems",
+      "OOP",
+    ],
+  },
+];
+
+const tabs = [
+  { id: "impact", label: "Engineering Impact", icon: Sparkles },
+  { id: "skills", label: "Skills", icon: Code2 },
+];
 
 export function About() {
-  const [activeTab, setActiveTab] = useState("experience");
-
-  const tabs = [
-    { id: "skills", label: "Skills", icon: Code2 },
-    { id: "education", label: "Education", icon: GraduationCap },
-    { id: "experience", label: "Experience", icon: Briefcase },
-    { id: "coding", label: "Platforms Profiles", icon: Code2 },
-    { id: "certifications", label: "Certifications", icon: Award },
-  ];
-
-  const programmingSkills = [
-    { name: "Java" },
-    { name: "JavaScript" },
-    
-    
-    
-    { name: "HTML/CSS" },
-  ];
-
-  const frameworks = [
-    { name: "Spring Boot" },
-    { name: "React" },
-    { name: "Node.js" },
-    { name: "Tailwind CSS" },
-    { name: "Thymeleaf" },
-  ];
-
-const backendDB = [
-  { name: "MySQL" },
-  { name: "MongoDB" },
-  { name: "Redis" },
-  { name: "REST APIs" },
-  { name: "OAuth2 / JWT" },
-  { name: "Microservices" }
-];
-const devOpsTools = [
-  { name: "Docker & Docker Hub" },
-  { name: "Nginx" },
-  { name: "AWS" },
-  { name: "CI/CD" },
-  {name:"VS Code"},
-  {name:"Git & GitHub"}
- 
-];
-
-  const experiences = [
-    {
-      role: "Backend Developer",
-      company: "Project-Based & Hackathon Experience",
-      period: "2024 - Present",
-      description:
-        "Built scalable backend applications with Spring Boot, designed REST APIs, and integrated secure auth/database flows for real-world projects.",
-    },
-    {
-      role: "Full-Stack Developer",
-      company: "Personal & Team Projects",
-      period: "2025 - Present",
-      description:
-        "Developed full-stack products with React and backend services, focusing on clean architecture, reliability, and production-ready deployment.",
-    },
-  ];
-
-const education = [
-  {
-    degree: "B.E. Electronics and Communication Engineering",
-    institution: "Sri Eshwar College of Engineering",
-    period: "2024 - 2028",
-    description:
-      "Currently pursuing my undergraduate degree with a CGPA of 8.10. Actively focusing on backend development using Spring Boot, system design concepts, and building scalable full-stack applications through projects and hackathons.",
-  },
-  {
-    degree: "Higher Secondary Certificate (HSC)",
-    institution: "Swamy Vivekananda Matric Hr. Sec School",
-    period: "2023 - 2024",
-    description:
-      "Completed higher secondary education with 90.5%, building strong fundamentals in mathematics, logical reasoning, and analytical thinking.",
-  },
-  {
-    degree: "Secondary School Leaving Certificate (SSLC)",
-    institution: "Swamy Vivekananda Matric Hr. Sec School",
-    period: "2021 - 2022",
-    description:
-      "Completed secondary education with 92%, developing foundational problem-solving and academic discipline.",
-  },
-];
-
-  const codingProfiles = [
- {
-    platform: "GitHub",
-    username: "@Bavithran100",
-    url: "https://github.com/Bavithran100",
-    primaryMetricLabel: "Projects",
-    primaryMetric: "5+",
-    secondaryMetricLabel: "Public Repos",
-    secondaryMetric: "Growing",
-  },
-  {
-    platform: "LeetCode",
-    username: "Bavithran",
-    url: "https://leetcode.com/u/Bavithran777/",
-    primaryMetricLabel: "Problems Solved",
-    primaryMetric: "350+",
-    secondaryMetricLabel: "Focus",
-    secondaryMetric: "DSA Practice",
-  },
-  {
-    platform: "GeeksforGeeks",
-    username: "Bavithran",
-    url: "https://www.geeksforgeeks.org/profile/bavithrann77gf",
-    primaryMetricLabel: "Practice",
-    primaryMetric: "DSA + CS",
-    secondaryMetricLabel: "Topics",
-    secondaryMetric: "Algorithms",
-  },
-  {
-    platform: "SkillRack",
-    username: "Bavithran",
-    url: "https://www.skillrack.com/faces/resume.xhtml?id=515212&key=4dc142e2f19dfe3c9faa7325a937c728c3caa2a8",
-    primaryMetricLabel: "Problems Solved",
-    primaryMetric: "1000+",
-    secondaryMetricLabel: "Achievements",
-    secondaryMetric: "351 Bronzes",
-  }
-  ];
-
-const certifications = [
-  {
-    name: "Honors Diploma in Computer Application (HDCA)",
-    issuer: "SkillIndia",
-    date: "Completed",
-  },
-  {
-    name: "The Complete Java Programmer: From Scratch to Advanced",
-    issuer: "Udemy",
-    date: "2024",
-  },
-  {
-    name: "Mastering Data Structures & Algorithms using Java",
-    issuer: "Udemy",
-    date: "2024",
-  },
-  {
-    name: "Ethics in Generative AI",
-    issuer: "Udemy",
-    date: "2024",
-  },
-];
+  const [activeTab, setActiveTab] = useState("impact");
 
   return (
-    <section
-      id="about"
-      className="py-32 bg-black relative overflow-hidden ink-splash-section ink-splash-v2"
-    >
-      {/* <AnimatedBackground /> */}
-         <div className="hero-paint-splashes" aria-hidden="true">
-        <img
-          src="/image02.png"
-          alt=""
-          className="hero-paint hero-paint-left"
-        />
-       
+    <section id="about" className="about-section relative overflow-hidden bg-[#030303] py-28 sm:py-32">
+      <div className="about-aurora" aria-hidden="true">
+        <div className="about-aurora-blob about-aurora-cyan" />
+        <div className="about-aurora-blob about-aurora-violet" />
+        <div className="about-aurora-blob about-aurora-indigo" />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-violet-900/5 to-transparent"></div>
+      <div
+        className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.016)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.016)_1px,transparent_1px)] bg-[size:80px_80px] [mask-image:linear-gradient(to_bottom,transparent,black_18%,black_80%,transparent)]"
+        aria-hidden="true"
+      />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-violet-400">
-              About Me
+      <div className="container relative z-10 mx-auto px-6">
+        <div className="mx-auto max-w-6xl">
+          <ScrollReveal className="mb-16 max-w-3xl sm:mb-20">
+            <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-cyan-300 uppercase">
+              About
+            </p>
+            <h2 className="text-4xl font-semibold tracking-[-0.045em] text-white sm:text-5xl md:text-6xl">
+              Understanding systems,
+              <span className="block text-zinc-500">then building them well.</span>
             </h2>
-            <div className="h-1 w-24 mx-auto bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full"></div>
+            <p className="mt-6 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg">
+              My work sits where backend engineering meets computer science fundamentals,
+              production architecture, and practical AI.
+            </p>
+          </ScrollReveal>
+
+          <div className="grid gap-5 lg:grid-cols-2">
+            <ScrollReveal delay={80} className="h-full">
+              <article className="about-card group h-full p-7 sm:p-9">
+                <div className="about-card-icon">
+                  <Braces size={19} />
+                </div>
+                <p className="about-eyebrow">01 / Who I Am</p>
+                <h3 className="mt-4 text-2xl font-semibold tracking-[-0.025em] text-white">
+                  A backend-focused builder with systems curiosity.
+                </h3>
+                <p className="mt-5 leading-7 text-zinc-400">
+                  I build backend applications with Java, Spring Boot, MySQL, and Docker.
+                  Beyond making features work, I care about the path a request takes, how data
+                  moves, where systems fail, and what keeps them maintainable as they grow.
+                </p>
+              </article>
+            </ScrollReveal>
+
+            <ScrollReveal delay={160} className="h-full">
+              <article className="about-card group h-full p-7 sm:p-9">
+                <div className="about-card-icon">
+                  <Layers3 size={19} />
+                </div>
+                <p className="about-eyebrow">02 / Engineering Philosophy</p>
+                <h3 className="mt-4 text-2xl font-semibold tracking-[-0.025em] text-white">
+                  Learn from first principles. Design for reality.
+                </h3>
+                <p className="mt-5 leading-7 text-zinc-400">
+                  Good engineering is thoughtful tradeoffs, clear boundaries, and simple ideas
+                  that survive production. I learn by building, measuring, and tracing concepts
+                  from operating system internals to distributed application behavior.
+                </p>
+              </article>
+            </ScrollReveal>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="glassmorphism p-10 rounded-2xl border border-white/10 hover:border-cyan-500/30 transition-all">
-              <h3 className="text-3xl text-white mb-6">Hi, I'm Bavithran</h3>
-              <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
-                <p>
-                  I am a backend-focused <span className="text-cyan-400">Software Developer</span> with
-                  strong experience in building scalable applications using <span className="text-cyan-400">Spring Boot</span>.
-                  I enjoy designing clean REST APIs and working with databases to solve real-world problems.
-                </p>
-                <p>
-                  Alongside backend development, I have hands-on experience with <span className="text-violet-400">AI/ML concepts</span>
-                  and enjoy applying them where intelligent decision-making adds value. I am actively learning
-                  <span className="text-violet-400"> system design and networking</span> for production-grade systems.
-                </p>
-                <p>
-                  I believe in learning by building and continuously improving performance, reliability,
-                  and maintainability in every project.
-                </p>
+          <div className="mt-24 sm:mt-28">
+            <ScrollReveal className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+              <div>
+                <p className="about-eyebrow">03 / Technical Interests</p>
+                <h3 className="mt-3 text-3xl font-semibold tracking-[-0.035em] text-white sm:text-4xl">
+                  The layers I keep exploring
+                </h3>
               </div>
+              <p className="max-w-md text-sm leading-6 text-zinc-500">
+                From low-level foundations to production services and intelligent applications.
+              </p>
+            </ScrollReveal>
+
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {interests.map(({ title, description, icon }, index) => (
+                <ScrollReveal
+                  key={title}
+                  delay={index * 65}
+                  className={index === interests.length - 1 ? "sm:col-span-2 lg:col-span-2" : ""}
+                >
+                  <article className="about-interest-card group h-full">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="about-interest-icon">{createElement(icon, { size: 18 })}</div>
+                      <ArrowUpRight
+                        size={15}
+                        className="text-zinc-700 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-cyan-300"
+                      />
+                    </div>
+                    <h4 className="mt-8 text-base font-semibold text-zinc-100">{title}</h4>
+                    <p className="mt-2 text-sm leading-6 text-zinc-500">{description}</p>
+                  </article>
+                </ScrollReveal>
+              ))}
             </div>
+          </div>
 
-            <div>
-              <div className="flex flex-wrap gap-3 mb-8">
-                {tabs.map((tab) => {
-                  const Icon = tab.icon;
-                  return (
-                    <button
-                      key={tab.id}
-                      onClick={() => setActiveTab(tab.id)}
-                      className={`px-5 py-2.5 rounded-lg text-sm transition-all inline-flex items-center gap-2 ${
-                        activeTab === tab.id
-                          ? "bg-gradient-to-r from-cyan-500/20 to-violet-500/20 text-cyan-400 border-b-2 border-cyan-400"
-                          : "text-gray-400 hover:text-white border-b-2 border-transparent"
-                      }`}
-                    >
-                      <Icon size={15} />
-                      {tab.label}
-                    </button>
-                  );
-                })}
+          <div className="mt-24 sm:mt-28">
+            <ScrollReveal className="mb-10">
+              <p className="about-eyebrow">04 / Journey Timeline</p>
+              <h3 className="mt-3 text-3xl font-semibold tracking-[-0.035em] text-white sm:text-4xl">
+                Building upward from the fundamentals
+              </h3>
+            </ScrollReveal>
+
+            <div className="relative grid gap-4 md:grid-cols-5">
+              <div
+                className="absolute left-[10%] right-[10%] top-4 hidden h-px bg-gradient-to-r from-cyan-400/25 via-violet-400/25 to-indigo-400/25 md:block"
+                aria-hidden="true"
+              />
+              {journey.map((item, index) => (
+                <ScrollReveal key={item.title} delay={index * 80}>
+                  <article className="group relative border-l border-white/10 pl-5 md:border-l-0 md:pl-0 md:pt-10">
+                    <span className="absolute -left-[4.5px] top-0 h-2 w-2 rounded-full border border-cyan-300/50 bg-[#070707] transition-colors duration-300 group-hover:bg-cyan-300 md:left-1/2 md:top-[12px] md:-translate-x-1/2" />
+                    <p className="text-[10px] font-semibold tracking-[0.16em] text-zinc-600 uppercase">
+                      {item.phase}
+                    </p>
+                    <h4 className="mt-2 text-sm font-semibold text-zinc-200">{item.title}</h4>
+                    <p className="mt-2 text-xs leading-5 text-zinc-500">{item.description}</p>
+                  </article>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+
+          <ScrollReveal className="mt-24 sm:mt-28">
+            <div className="overflow-hidden rounded-2xl border border-white/[0.08] bg-black/30 backdrop-blur-xl">
+              <div className="flex flex-wrap gap-2 border-b border-white/[0.08] p-3">
+                {tabs.map(({ id, label, icon }) => (
+                  <button
+                    key={id}
+                    type="button"
+                    onClick={() => setActiveTab(id)}
+                    className={`inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-300 ${
+                      activeTab === id
+                        ? "bg-white/[0.09] text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]"
+                        : "text-zinc-500 hover:bg-white/[0.04] hover:text-zinc-300"
+                    }`}
+                  >
+                    {createElement(icon, { size: 15 })}
+                    {label}
+                  </button>
+                ))}
               </div>
 
-              <div className="glassmorphism p-8 rounded-2xl border border-white/10 min-h-[400px]">
+              <div className="p-5 sm:p-7">
+                {activeTab === "impact" && (
+                  <div className="grid gap-4 md:grid-cols-2">
+                    {impactAreas.map(({ title, description, tags, icon }, index) => (
+                      <article
+                        key={title}
+                        className="about-tab-card about-tab-reveal"
+                        style={{ "--about-tab-delay": `${index * 70}ms` }}
+                      >
+                        <div className="about-interest-icon">{createElement(icon, { size: 18 })}</div>
+                        <h4 className="mt-5 text-lg font-semibold text-white">{title}</h4>
+                        <p className="mt-2 text-sm leading-6 text-zinc-500">{description}</p>
+                        <div className="mt-5 flex flex-wrap gap-2">
+                          {tags.map((tag) => (
+                            <span key={tag} className="about-skill-pill">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                )}
+
                 {activeTab === "skills" && (
-                  <div className="space-y-8">
-                    <div>
-                      <h4 className="text-xl text-white mb-4">Programming</h4>
-                      <div className="flex flex-wrap gap-3">
-                        {programmingSkills.map((skill, index) => (
-                          <div
-                            key={index}
-                            className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-cyan-500/30 transition-all"
-                          >
-                            <span className="text-gray-300">{skill.name}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4 className="text-xl text-white mb-4">Frameworks & Tools</h4>
-                      <div className="flex flex-wrap gap-3">
-                        {frameworks.map((skill, index) => (
-                          <div
-                            key={index}
-                            className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-cyan-500/30 transition-all"
-                          >
-                            <span className="text-gray-300">{skill.name}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4 className="text-xl text-white mb-4">Backend & Database</h4>
-                      <div className="flex flex-wrap gap-3">
-                        {backendDB.map((skill, index) => (
-                          <div
-                            key={index}
-                            className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-cyan-500/30 transition-all"
-                          >
-                            <span className="text-gray-300">{skill.name}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="text-xl text-white mb-4">DevOps & Tools</h4>
-                      <div className="flex flex-wrap gap-3">
-                        {devOpsTools.map((skill, index) => (
-                          <div
-                            key={index}
-                            className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-cyan-500/30 transition-all"
-                          >
-                            <span className="text-gray-300">{skill.name}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {activeTab === "education" && (
-                  <div className="space-y-6">
-                    {education.map((edu, index) => (
-                      <div key={index} className="border-l-2 border-cyan-500 pl-6 pb-6">
-                        <div className="flex items-start gap-3 mb-2">
-                          <GraduationCap className="text-cyan-400 flex-shrink-0 mt-1" size={24} />
-                          <div>
-                            <h4 className="text-xl text-white mb-1">{edu.degree}</h4>
-                            <p className="text-violet-400 mb-2">{edu.institution}</p>
-                            <p className="text-sm text-gray-400 mb-3">{edu.period}</p>
-                            <p className="text-gray-300">{edu.description}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {activeTab === "experience" && (
-                  <div className="space-y-6">
-                    {experiences.map((exp, index) => (
-                      <div key={index} className="border-l-2 border-cyan-500 pl-6 pb-6">
-                        <div className="flex items-start gap-3 mb-2">
-                          <Briefcase className="text-cyan-400 flex-shrink-0 mt-1" size={24} />
-                          <div>
-                            <h4 className="text-xl text-white mb-1">{exp.role}</h4>
-                            <p className="text-violet-400 mb-2">{exp.company}</p>
-                            <p className="text-sm text-gray-400 mb-3">{exp.period}</p>
-                            <p className="text-gray-300">{exp.description}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {activeTab === "coding" && (
-                  <div className="space-y-4">
-                    {codingProfiles.map((profile, index) => (
-                      <div
-                        key={index}
-                        className="p-6 bg-white/5 border border-white/10 rounded-lg hover:border-cyan-500/30 transition-all"
+                  <div className="grid gap-4 md:grid-cols-2">
+                    {skillGroups.map(({ title, skills }, index) => (
+                      <article
+                        key={title}
+                        className="about-tab-card about-tab-reveal"
+                        style={{ "--about-tab-delay": `${index * 70}ms` }}
                       >
-                        <div className="flex justify-between items-start mb-3">
-                          <div>
-                            <h4 className="text-xl text-white mb-1">{profile.platform}</h4>
-                            <a href={profile.url} target="_blank" className="text-cyan-400">{profile.username}</a>
-                          </div>
-                          <Code2 className="text-violet-400" size={24} />
+                        <h4 className="text-sm font-semibold text-zinc-200">{title}</h4>
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {skills.map((skill) => (
+                            <span key={skill} className="about-skill-pill">
+                              {skill}
+                            </span>
+                          ))}
                         </div>
-                        <div className="flex gap-6 text-sm">
-                          <div>
-                            <p className="text-gray-400">{profile.primaryMetricLabel}</p>
-                            <p className="text-white text-lg">{profile.primaryMetric}</p>
-                          </div>
-                          <div>
-                            <p className="text-gray-400">{profile.secondaryMetricLabel}</p>
-                            <p className="text-white text-lg">{profile.secondaryMetric}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {activeTab === "certifications" && (
-                  <div className="space-y-4">
-                    {certifications.map((cert, index) => (
-                      <div
-                        key={index}
-                        className="p-6 bg-white/5 border border-white/10 rounded-lg hover:border-cyan-500/30 transition-all"
-                      >
-                        <div className="flex items-start gap-3">
-                          <Award className="text-cyan-400 flex-shrink-0 mt-1" size={24} />
-                          <div>
-                            <h4 className="text-xl text-white mb-1">{cert.name}</h4>
-                            <p className="text-violet-400 mb-2">{cert.issuer}</p>
-                            <p className="text-sm text-gray-400">{cert.date}</p>
-                          </div>
-                        </div>
-                      </div>
+                      </article>
                     ))}
                   </div>
                 )}
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

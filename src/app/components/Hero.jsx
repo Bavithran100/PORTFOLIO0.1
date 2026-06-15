@@ -1,159 +1,254 @@
-import { ArrowDown, Github, Linkedin, Mail, FileText, MapPin, GraduationCap, CalendarDays } from "lucide-react";
-import { Button } from "./ui/button";
+import {
+  ArrowDown,
+  ArrowUpRight,
+  CalendarDays,
+  FileText,
+  Github,
+  GraduationCap,
+  Linkedin,
+  Mail,
+  MapPin,
+} from "lucide-react";
+import { createElement } from "react";
 import { AnimatedBackground } from "./AnimatedBackground";
+import { Button } from "./ui/button";
 import { TypingRotatingText } from "./TypingRotatingText";
+
+const rotatingRoles = [
+  "Backend Engineer",
+  "AI Application Builder",
+  "System Design Enthusiast",
+  "Distributed Systems Learner",
+  "Networking Explorer",
+  "Operating Systems Enthusiast",
+];
+
+const focusAreas = [
+  "Spring Boot",
+  "Docker",
+  "Generative AI",
+  "RAG",
+  "System Design",
+  "Distributed Systems",
+  "Networking",
+  "Operating Systems",
+];
+
+const stats = [
+  { value: "350+", label: "LeetCode Problems" },
+  { value: "1000+", label: "SkillRack Problems" },
+  { value: "5+", label: "Projects Built" },
+];
+
+const socialLinks = [
+  {
+    label: "GitHub",
+    href: "https://github.com/Bavithran100",
+    icon: Github,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/bavithran-n-04b74b333/",
+    icon: Linkedin,
+  },
+  {
+    label: "Email",
+    href: "mailto:bavithrannatarajan@gmail.com",
+    icon: Mail,
+  },
+  {
+    label: "Resume",
+    href: "https://drive.google.com/file/d/1kkRXo_uQL6WwQ1gWp6iT4BOZp-jVGGIY/view?usp=sharing",
+    icon: FileText,
+  },
+];
 
 export function Hero() {
   const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-const rotatingWords = [
-  "Backend Engineer",
-  "Distributed Systems Enthusiast",
-  "System Design Learner",
-  "Spring Boot Developer",
-  "Networking & OS Explorer",
-  "Problem Solver"
-];
-
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative bg-black overflow-hidden py-24 lg:py-20">
-      <AnimatedBackground/>
-      <div className="hero-paint-splashes" aria-hidden="true">
-        <img
-          src="/image.png"
-          alt=""
-          className="hero-paint hero-paint-left"
-        />
-        {/* <img
-          src="/image01.png"
-          alt=""
-          className="hero-paint hero-paint-right"
-        /> */}
-      </div>
-      {/* <div className="absolute inset-0 bg-gradient-to-br from-violet-900/20 via-transparent to-cyan-900/20"></div>
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/30 rounded-full blur-[120px] animate-pulse"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/30 rounded-full blur-[120px] animate-pulse delay-700"></div> */}
+    <section
+      id="hero"
+      className="relative flex min-h-screen items-center overflow-hidden bg-black px-0 pb-20 pt-28 lg:pb-24 lg:pt-32"
+    >
+      <AnimatedBackground subtle />
+      <div className="absolute inset-0 z-[1] bg-black/55" aria-hidden="true" />
+      <div
+        className="absolute left-[8%] top-[12%] z-[2] h-[30rem] w-[30rem] rounded-full bg-cyan-500/[0.08] blur-[140px]"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-[8%] right-[4%] z-[2] h-[34rem] w-[34rem] rounded-full bg-violet-500/[0.09] blur-[150px]"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 z-[2] bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
+        aria-hidden="true"
+      />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-6  items-center">
-          <div className="text-center lg:text-left lg:translate-x-6">
-            <div className="mb-5">
-              <p className="text-gray-400 text-xl md:text-2xl mb-3">
-                Hi, I am
-              </p>
-              <h1 className="text-4xl sm:text-5xl md:text-[3.5rem] mb-3 bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-200 to-violet-400 animate-fade-in">
+      <div className="container relative z-10 mx-auto px-6">
+        <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
+          <div className="text-center lg:text-left">
+            <div className="hero-reveal" style={{ "--hero-delay": "80ms" }}>
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-medium tracking-[0.18em] text-zinc-300 uppercase backdrop-blur-sm">
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                Software Engineer
+              </div>
+              <h1 className="text-4xl font-semibold tracking-[-0.045em] text-white sm:text-5xl md:text-6xl lg:text-[4rem] lg:leading-[1.05]">
                 Bavithran Natarajan
               </h1>
-              <div className="h-1 w-28 mx-auto lg:mx-0 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-full mb-6"></div>
+              <h2 className="mt-4 flex min-h-10 items-center justify-center text-xl font-medium tracking-[-0.02em] text-zinc-300 sm:text-2xl lg:justify-start">
+                <span className="mr-2 text-zinc-600">I&apos;m a</span>
+                <TypingRotatingText
+                  words={rotatingRoles}
+                  className="text-cyan-300"
+                  typingSpeed={70}
+                  deletingSpeed={35}
+                  pauseTime={1800}
+                />
+              </h2>
             </div>
 
-          <h2 className="text-2xl md:text-3xl text-white/90 mb-5 min-h-[40px] md:min-h-[48px] flex items-center justify-center lg:justify-start">
-            <TypingRotatingText words={rotatingWords} className="text-cyan-400" />
-          </h2>
+            <div
+              className="hero-reveal mt-6 max-w-2xl space-y-3 text-base leading-7 text-zinc-400 sm:text-lg"
+              style={{ "--hero-delay": "180ms" }}
+            >
+              <p>
+                I build backend systems using Java, Spring Boot, MySQL, and Docker while
+                exploring AI applications, distributed systems, networking, and operating
+                system internals.
+              </p>
+              <p>
+                Passionate about understanding how modern software works, from LLM-powered
+                applications to scalable production architectures.
+              </p>
+            </div>
 
-          <p className="text-lg md:text-xl text-gray-400 mb-9 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-        I build scalable backend systems with Spring Boot and apply AIML
-to real-world problems, while actively learning system design
-and networking for production-ready applications.
-          </p>
-
-          <div className="flex gap-4 justify-center lg:justify-start flex-wrap mb-10">
-            <Button
-              size="lg"
-              onClick={() => scrollToSection("projects")}
-              className="bg-gradient-to-r from-cyan-500 to-violet-600 hover:from-cyan-400 hover:to-violet-500 text-white px-6 py-5 text-base rounded-xl shadow-[0_0_30px_rgba(0,212,255,0.3)] hover:shadow-[0_0_40px_rgba(0,212,255,0.5)] transition-all"
+            <div
+              className="hero-reveal mt-7 max-w-2xl"
+              style={{ "--hero-delay": "280ms" }}
             >
-              View Projects
-            </Button>
-            <Button
-              size="lg"
-              onClick={() => scrollToSection("contact")}
-              className="bg-gradient-to-r from-violet-500 to-pink-600 hover:from-violet-400 hover:to-pink-500 text-white px-6 py-5 text-base rounded-xl shadow-[0_0_30px_rgba(168,85,247,0.3)] hover:shadow-[0_0_40px_rgba(168,85,247,0.5)] transition-all"
-            >
-              Get In Touch
-            </Button>
-            <Button
-              size="lg"
-              onClick={() => window.open("https://drive.google.com/file/d/1kkRXo_uQL6WwQ1gWp6iT4BOZp-jVGGIY/view?usp=sharing", "_blank")}
-              className="bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-400 hover:to-cyan-500 text-white px-6 py-5 text-base rounded-xl shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-[0_0_40px_rgba(16,185,129,0.5)] transition-all"
-            >
-              <FileText size={20} className="mr-2" />
-              View Resume
-            </Button>
-          </div>
-
-          <div className="flex gap-4 justify-center lg:justify-start">
-            <a
-              href="https://github.com/Bavithran100"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-11 h-11 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(0,212,255,0.3)] transition-all"
-              aria-label="GitHub"
-            >
-              <Github size={20} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/bavithran-n-04b74b333/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-11 h-11 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(0,212,255,0.3)] transition-all"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={20} />
-            </a>
-            <a
-             href="mailto:bavithrannatarajan@gmail.com"
-              className="w-11 h-11 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(0,212,255,0.3)] transition-all"
-              aria-label="Email"
-            >
-              <Mail size={20} />
-            </a>
-            <a
-              href="https://drive.google.com/file/d/1kkRXo_uQL6WwQ1gWp6iT4BOZp-jVGGIY/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-11 h-11 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(0,212,255,0.3)] transition-all"
-              aria-label="Resume"
-            >
-              <FileText size={20} />
-            </a>
-          </div>
-        </div>
-
-          <div className="w-full max-w-sm mx-auto">
-            <div className="rounded-3xl p-[1px] bg-gradient-to-br from-cyan-400 via-violet-500 to-fuchsia-500 shadow-[0_0_45px_rgba(34,211,238,0.18)]">
-              <div className="overflow-hidden rounded-[calc(1.5rem-1px)] bg-zinc-950">
-                <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-br from-cyan-950 via-zinc-950 to-violet-950">
-                  <span className="absolute inset-0 flex items-center justify-center text-8xl font-semibold text-white/10">
-                    BN
+              <p className="mb-3 text-xs font-semibold tracking-[0.16em] text-zinc-500 uppercase">
+                Currently Focused On
+              </p>
+              <div className="flex flex-wrap justify-center gap-2 lg:justify-start">
+                {focusAreas.map((area, index) => (
+                  <span
+                    key={area}
+                    className="hero-tag-reveal rounded-full border border-white/10 bg-white/[0.045] px-3 py-1.5 text-xs font-medium text-zinc-300 backdrop-blur-sm transition-colors duration-300 hover:border-cyan-300/30 hover:bg-cyan-300/[0.07] hover:text-cyan-100"
+                    style={{ "--tag-delay": `${380 + index * 55}ms` }}
+                  >
+                    {area}
                   </span>
-                  <img
-                    src="/Portfolio-photo.png"
-                    alt="Bavithran Natarajan"
-                    className="relative h-full w-full object-cover object-top"
-                    onError={(event) => {
-                      event.currentTarget.style.display = "none";
-                    }}
-                  />
+                ))}
+              </div>
+            </div>
+
+            <div
+              className="hero-reveal mt-8 flex flex-wrap justify-center gap-3 lg:justify-start"
+              style={{ "--hero-delay": "760ms" }}
+            >
+              <Button
+                size="lg"
+                onClick={() => scrollToSection("projects")}
+                className="group h-11 rounded-lg bg-white px-5 text-sm font-semibold text-black shadow-[0_10px_35px_rgba(255,255,255,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-cyan-50 hover:shadow-[0_14px_40px_rgba(103,232,249,0.16)]"
+              >
+                View Projects
+                <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Button>
+              <Button
+                size="lg"
+                onClick={() => scrollToSection("contact")}
+                className="h-11 rounded-lg border border-white/15 bg-white/[0.055] px-5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/[0.1]"
+              >
+                Get In Touch
+              </Button>
+              <Button
+                size="lg"
+                onClick={() =>
+                  window.open(
+                    "https://drive.google.com/file/d/1kkRXo_uQL6WwQ1gWp6iT4BOZp-jVGGIY/view?usp=sharing",
+                    "_blank",
+                    "noopener,noreferrer",
+                  )
+                }
+                className="h-11 rounded-lg border border-white/10 bg-transparent px-5 text-sm font-semibold text-zinc-300 transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-300/30 hover:bg-cyan-300/[0.06] hover:text-cyan-100"
+              >
+                <FileText />
+                View Resume
+              </Button>
+            </div>
+
+            <div
+              className="hero-reveal mt-7 flex justify-center gap-2 lg:justify-start"
+              style={{ "--hero-delay": "860ms" }}
+            >
+              {socialLinks.map(({ label, href, icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                  className="group flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/[0.035] text-zinc-500 transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-300/30 hover:bg-white/[0.075] hover:text-cyan-200"
+                  aria-label={label}
+                >
+                  {createElement(icon, {
+                    size: 18,
+                    className: "transition-transform duration-300 group-hover:scale-105",
+                  })}
+                </a>
+              ))}
+            </div>
+
+            <div
+              className="hero-reveal mt-6 grid max-w-xl grid-cols-3 divide-x divide-white/10 border-y border-white/10 py-4 text-left"
+              style={{ "--hero-delay": "940ms" }}
+            >
+              {stats.map(({ value, label }) => (
+                <div key={label} className="px-3 first:pl-0 sm:px-5 sm:first:pl-0">
+                  <p className="text-sm font-semibold text-white sm:text-base">{value}</p>
+                  <p className="mt-0.5 text-[10px] leading-4 text-zinc-500 sm:text-xs">{label}</p>
                 </div>
-                <div className="grid grid-cols-3 border-t border-white/10 bg-white/[0.04] px-3 py-4 text-gray-200">
-                  <div className="flex items-center justify-center gap-2 border-r border-white/15 px-2">
-                    <MapPin size={18} className="shrink-0 text-cyan-400" />
-                    <span className="text-xs sm:text-sm whitespace-nowrap">Coimbatore,<br/> India</span>
+              ))}
+            </div>
+          </div>
+
+          <div
+            className="hero-reveal mx-auto w-full max-w-sm"
+            style={{ "--hero-delay": "320ms" }}
+          >
+            <div className="hero-card-float">
+              <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.045] p-2 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-xl">
+                <div className="overflow-hidden rounded-[1.35rem] border border-white/[0.08] bg-zinc-950">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-br from-cyan-950/60 via-zinc-950 to-violet-950/60">
+                    <span className="absolute inset-0 flex items-center justify-center text-8xl font-semibold text-white/[0.04]">
+                      BN
+                    </span>
+                    <img
+                      src="/Portfolio-photo.png"
+                      alt="Bavithran Natarajan"
+                      className="relative h-full w-full object-cover object-top"
+                      onError={(event) => {
+                        event.currentTarget.style.display = "none";
+                      }}
+                    />
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-zinc-950/80 to-transparent" />
                   </div>
-                  <div className="flex items-center justify-center gap-2 border-r border-white/15 px-2">
-                    <GraduationCap size={19} className="shrink-0 text-cyan-400" />
-                    <span className="text-xs sm:text-sm whitespace-nowrap">B.E ECE</span>
-                  </div>
-                  <div className="flex items-center justify-center gap-2 px-2">
-                    <CalendarDays size={18} className="shrink-0 text-cyan-400" />
-                    <span className="text-[11px] sm:text-xs leading-tight">Passionate<br />Problem Solver</span>
+                  <div className="grid grid-cols-3 border-t border-white/[0.08] bg-white/[0.025] px-2 py-4 text-zinc-300">
+                    <div className="flex flex-col items-center gap-1.5 border-r border-white/10 px-1 text-center">
+                      <MapPin size={17} className="text-cyan-300" />
+                      <span className="text-[10px] leading-4 sm:text-xs">Coimbatore, India</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-1.5 border-r border-white/10 px-1 text-center">
+                      <GraduationCap size={18} className="text-cyan-300" />
+                      <span className="text-[10px] leading-4 sm:text-xs">B.E ECE</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-1.5 px-1 text-center">
+                      <CalendarDays size={17} className="text-cyan-300" />
+                      <span className="text-[10px] leading-4 sm:text-xs">Systems Thinker</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -164,10 +259,10 @@ and networking for production-ready applications.
 
       <button
         onClick={() => scrollToSection("about")}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-cyan-400/60 hover:text-cyan-400 transition-colors animate-bounce"
+        className="absolute bottom-6 left-1/2 z-20 -translate-x-1/2 rounded-full border border-white/10 bg-black/30 p-2 text-zinc-600 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:text-zinc-300"
         aria-label="Scroll to about section"
       >
-        <ArrowDown size={32} />
+        <ArrowDown size={18} />
       </button>
     </section>
   );

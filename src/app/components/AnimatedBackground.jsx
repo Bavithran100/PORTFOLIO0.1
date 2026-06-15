@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export function AnimatedBackground() {
+export function AnimatedBackground({ subtle = false }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -20,17 +20,17 @@ export function AnimatedBackground() {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    const particleCount = 40;
-    const maxDistance = 150;
+    const particleCount = subtle ? 22 : 40;
+    const maxDistance = subtle ? 120 : 150;
     const particles = [];
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 1.5,
-        vy: (Math.random() - 0.5) * 1.5,
-        radius: Math.random() * 2 + 1,
+        vx: (Math.random() - 0.5) * (subtle ? 0.45 : 1.5),
+        vy: (Math.random() - 0.5) * (subtle ? 0.45 : 1.5),
+        radius: Math.random() * (subtle ? 1.2 : 2) + 0.8,
       });
     }
 
@@ -46,7 +46,7 @@ export function AnimatedBackground() {
 
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(0, 212, 255, 0.8)";
+        ctx.fillStyle = subtle ? "rgba(103, 232, 249, 0.24)" : "rgba(0, 212, 255, 0.8)";
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -56,7 +56,7 @@ export function AnimatedBackground() {
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < maxDistance) {
-            const opacity = (1 - distance / maxDistance) * 0.6;
+            const opacity = (1 - distance / maxDistance) * (subtle ? 0.14 : 0.6);
 
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
@@ -66,7 +66,7 @@ export function AnimatedBackground() {
             ctx.stroke();
 
             if (distance < maxDistance * 0.5) {
-              ctx.strokeStyle = `rgba(168, 85, 247, ${opacity * 0.8})`;
+              ctx.strokeStyle = `rgba(168, 85, 247, ${opacity * (subtle ? 0.45 : 0.8)})`;
               ctx.stroke();
             }
           }
@@ -82,13 +82,13 @@ export function AnimatedBackground() {
       window.removeEventListener("resize", resizeCanvas);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [subtle]);
 
   return (
     <canvas
       ref={canvasRef}
       className="fixed inset-0 w-full h-full pointer-events-none z-0"
-      style={{ opacity: 10 }}
+      style={{ opacity: subtle ? 0.55 : 1 }}
     />
   );
 }
